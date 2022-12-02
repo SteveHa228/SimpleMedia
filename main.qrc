@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Slider.qml</file>
+        <file>Button.qml</file>
+        <file>pause_icon.svg</file>
+        <file>play_icon.svg</file>
+        <file>stop_icon.svg</file>
+        <file>load_icon.svg</file>
+        <file>PlayerMenu.qml</file>
+    </qresource>
+</RCC>
