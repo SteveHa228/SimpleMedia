@@ -37,6 +37,34 @@ Window{
         }
     }
 
+
+    property real prevx : 0
+    property real prevy : 0
+
+    MouseArea{
+        id: mouseWindow
+
+        anchors.fill: parent
+
+        onPressed: {
+            var globalPosition = mapToGlobal(mouseX, mouseY)
+            prevx = globalPosition.x
+            prevy = globalPosition.y
+        }
+
+        onPositionChanged: {
+
+            var globalPosition = mapToGlobal(mouseX, mouseY)
+
+            root.x += globalPosition.x - prevx
+            root.y += globalPosition.y - prevy
+            prevx = globalPosition.x
+            prevy = globalPosition.y
+
+        }
+    }
+
+
     PlayerMenu {
         id: menuBar
 
@@ -48,4 +76,8 @@ Window{
         mediaPlayer: mediaPlayer
         videoOutput: videoOutput
     }
+
 }
+
+
+

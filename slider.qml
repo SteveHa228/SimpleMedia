@@ -46,11 +46,20 @@ Item {
         }
 
         onPositionChanged:  if(drag.active) setPixels(pill.x + 0.5 * pill.width) // drag pill
-        onClicked:                          setPixels(mouse.x) // tap tray
+        onClicked: setPill(mouseArea.mouseX ) // tap tray
+
     }
 
     function setPixels(pixels) {
         var value = (maximum - minimum) / (root.width - pill.width) * (pixels - pill.width / 2) + minimum // value from pixels
         clicked(Math.min(Math.max(minimum, value), maximum)) // emit
+    }
+
+    function setPill(pixels) {
+        if(pixels >= pill.width/2 && pixels <= root.width - pill.width/2){
+            pill.x = pixels - pill.width/2
+            var value = (maximum - minimum) / (root.width - pill.width) * (pixels - pill.width / 2) + minimum // value from pixels
+            clicked(Math.min(Math.max(minimum, value), maximum)) // emit
+        }
     }
 }
